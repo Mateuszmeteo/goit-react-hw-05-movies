@@ -1,0 +1,18 @@
+/trending/get-trending lista najpopularniejszych filmów dzisiaj w celu utworzenia kolekcji na stronie głównej.
+/search/search-movies wyszukiwanie filmu po słowie kluczu na stronie filmów.
+/movies/get-movie-details zapytanie o pełną informację o filmie dla strony filmu.
+/movies/get-movie-credits zapytanie o informację o zespole aktorskim dla strony filmu.
+/movies/get-movie-reviews zapytanie o recenzje dla strony filmu.
+
+
+
+API_KEY = eda34bd8773f8b183adc5281f556f30c
+
+
+
+
+
+curl --request GET \
+     --url 'https://api.themoviedb.org/3/trending/all/day?language=en-US' \
+     --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGEzNGJkODc3M2Y4YjE4M2FkYzUyODFmNTU2ZjMwYyIsInN1YiI6IjY0YTgyOWFmNjVjMjZjMDE0ZWRjZWY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y9Q7WkiOUP1JQr8gCQgtdae93H4CaiIOCE98tNcYwq0' \
+     --header 'accept: application/json'
