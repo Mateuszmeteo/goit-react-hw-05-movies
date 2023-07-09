@@ -16,3 +16,22 @@ curl --request GET \
      --url 'https://api.themoviedb.org/3/trending/all/day?language=en-US' \
      --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZGEzNGJkODc3M2Y4YjE4M2FkYzUyODFmNTU2ZjMwYyIsInN1YiI6IjY0YTgyOWFmNjVjMjZjMDE0ZWRjZWY1NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Y9Q7WkiOUP1JQr8gCQgtdae93H4CaiIOCE98tNcYwq0' \
      --header 'accept: application/json'
+
+
+
+
+
+
+
+
+
+
+
+             <div>
+            <h1>Trending movies</h1>
+            <ul>
+                {movies.map((item) => (
+                    <li key={item.id}>{item.title}</li>
+                ))}
+            </ul>
+        </div>
