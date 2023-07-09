@@ -1,6 +1,5 @@
-const { default: Home } = require("components/Home/Home")
-const { Movies } = require("components/Movies/Movies")
-const { NavLink } = require("react-router-dom")
+
+import { NavLink } from "react-router-dom"
 
 
 

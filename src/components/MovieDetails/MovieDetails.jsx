@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate, Outlet } from "react-router-dom"
 import axios from "axios"
+
+import styles from './movieDetails.module.scss'
 
 const MovieDetails = () => {
 
     const {movieId} = useParams()
     const [movie, setMovie] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -27,24 +30,31 @@ const MovieDetails = () => {
         return <div>loading...</div>
     }
 
+    const handleGoBack = () => {
+        navigate(-1)
+    }
+
     return (
-        <div>
-          <div>
-            <Link to="/">Go back...</Link>
+        <div className={styles.movieDetails}>
+          <div className={styles.movieDetails__btnBack}>
+            <button onClick={handleGoBack}>Go back...</button>
+            {/* <Link to="/">Go back...</Link> */}
           </div>
-          <div>
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
-          </div>
-          <div>
-            <h1>{movie.title}</h1>
-            <h2>Overview</h2>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <ul>
-              {movie.genres.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
+          <div className={styles.movieDetails__frontDiv}>
+            <div>
+                <img className={styles.movieDetails__frontDivImg} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+            </div>
+            <div className={styles.movieDetails__frontDivNotes}>
+                <h1>{movie.title}</h1>
+                <h2>Overview</h2>
+                <p>{movie.overview}</p>
+                <h3>Genres</h3>
+                <ul>
+                {movie.genres.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                ))}
+                </ul>
+            </div>
           </div>
           <div>
             <p>Additional information</p>
@@ -57,6 +67,7 @@ const MovieDetails = () => {
               </li>
             </ul>
           </div>
+          <Outlet />
         </div>
       );
     };
