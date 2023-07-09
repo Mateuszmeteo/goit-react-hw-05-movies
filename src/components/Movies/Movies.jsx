@@ -11,7 +11,7 @@ const Movies = () => {
     const navigate = useNavigate()
 
     const handleSearch = () => {
-        navigate.push(`/movies?keyword=${keyword}`)
+        navigate(`/movies/${keyword}`)
     }
 
 

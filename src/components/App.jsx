@@ -16,7 +16,7 @@ import Header from "./Header/Header";
 
 
 
-export const App = () => {
+const App = () => {
   return (
     <div >
       {/* <Suspense fallback={<div>Loading...</div>}> */}
@@ -34,3 +34,4 @@ export const App = () => {
     </div>
   );
 };
+export default App

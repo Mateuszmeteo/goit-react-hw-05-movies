@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link, useParams, useNavigate, Outlet } from "react-router-dom"
+import { Link, useParams, useNavigate, Outlet, } from "react-router-dom"
 import axios from "axios"
 
 import styles from './movieDetails.module.scss'
@@ -8,7 +8,33 @@ const MovieDetails = () => {
 
     const {movieId} = useParams()
     const [movie, setMovie] = useState(null)
+    const [keyword, setKeyword] = useState(null);
     const navigate = useNavigate()
+
+
+
+    useEffect(() => {
+        const fetchMovieId = async () => {
+          try {
+            const response = await axios.get(`https://api.themoviedb.org/3/search/movie`,
+              {
+                params: {
+                  api_key: "eda34bd8773f8b183adc5281f556f30c",
+                  query: keyword,
+                },
+              }
+            );
+            if (response.data.results.length > 0) {
+              setKeyword(response.data.results[0].id);
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        fetchMovieId();
+      }, [keyword]);
+    
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
@@ -20,7 +46,7 @@ const MovieDetails = () => {
             )
             setMovie(response.data)
             } catch (error) {
-                // alert("error-movieDetails")
+                alert("error-movieDetails")
             }
         }
         fetchMovieDetails()
