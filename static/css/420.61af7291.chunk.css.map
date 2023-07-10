@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/420.61af7291.chunk.css","mappings":"AAII,4CACI,aAEJ,+CACI","sources":["components/MovieDetails/movieDetails.module.scss"],"sourcesContent":["\n.movieDetails {\n\n\n    &__frontDiv {\n        display: flex;\n    }\n    &__frontDivImg {\n        height: 400px;\n    }\n}"],"names":[],"sourceRoot":""}
