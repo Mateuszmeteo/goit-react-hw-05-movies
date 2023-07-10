@@ -8,32 +8,10 @@ const MovieDetails = () => {
 
     const {movieId} = useParams()
     const [movie, setMovie] = useState(null)
-    const [keyword, setKeyword] = useState(null);
     const navigate = useNavigate()
 
 
 
-    useEffect(() => {
-        const fetchMovieId = async () => {
-          try {
-            const response = await axios.get(`https://api.themoviedb.org/3/search/movie`,
-              {
-                params: {
-                  api_key: "eda34bd8773f8b183adc5281f556f30c",
-                  query: keyword,
-                },
-              }
-            );
-            if (response.data.results.length > 0) {
-              setKeyword(response.data.results[0].id);
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        };
-    
-        fetchMovieId();
-      }, [keyword]);
     
 
     useEffect(() => {
@@ -60,6 +38,10 @@ const MovieDetails = () => {
         navigate(-1)
     }
 
+    const userScore = Math.round((movie.vote_average / 10) * 100);
+    const releaseYear = movie.release_date ? movie.release_date.substring(0, 4) : '';
+
+
     return (
         <div className={styles.movieDetails}>
           <div className={styles.movieDetails__btnBack}>
@@ -71,7 +53,8 @@ const MovieDetails = () => {
                 <img className={styles.movieDetails__frontDivImg} src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
             </div>
             <div className={styles.movieDetails__frontDivNotes}>
-                <h1>{movie.title}</h1>
+                <h1>{movie.title} ({releaseYear})</h1>
+                <p>User Score: {userScore}%</p>
                 <h2>Overview</h2>
                 <p>{movie.overview}</p>
                 <h3>Genres</h3>

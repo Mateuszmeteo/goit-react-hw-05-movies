@@ -35,3 +35,33 @@ curl --request GET \
                 ))}
             </ul>
         </div>
+
+
+
+
+
+
+        ///===/// do movues zamiast link ///=====///
+
+        import {navigate}
+
+          const navigate = useNavigate();
+
+
+        const handleNavigateToMovieDetails = (movieId) => {
+          navigate(`/movies/${movieId}`);
+        };
+
+        //==//
+
+        <button onClick={() => handleNavigateToMovieDetails(result.id)}>
+          {result.title}
+        </button>
+
+        //===//=============/////////////////////====================/////////////
+
+        // import  Home  from "./Home/Home"
+// import  Movies  from "./Movies/Movies";
+// import  MovieDetails  from "./MovieDetails/MovieDetails";
+// import  Cast  from "./Cast/Cast";
+// import  Reviews  from "./Reviews/Reviews";
